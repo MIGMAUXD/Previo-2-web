@@ -28,6 +28,7 @@ private String jdbcURL = "jdbc:postgresql://: fanny.db.elephantsql.com/jnvgnqqv"
     private static final String SELECT_ALL_USERS = "SELECT * FROM user";
     private static final String DELETE_USERS_SQL = "DELETE FROM user WHERE id = ?;";
     private static final String UPDATE_USERS_SQL = "UPDATE user SET username = ?, pass = ?, email = ?;";
+    private static final String SELECT_USER = "SELECT * FROM user WHERE username = ? AND pass = ?";
     
     protected Connection getConnection() {
         Connection connection = null;
@@ -145,5 +146,24 @@ private String jdbcURL = "jdbc:postgresql://: fanny.db.elephantsql.com/jnvgnqqv"
                 }
             }
         }
+    }
+    
+    public boolean isValidUser(String username, String pass) {
+        boolean isValid = false;
+
+        try (Connection connection = getConnection();) {
+            try (PreparedStatement statement = connection.prepareStatement(SELECT_USER)) {
+                statement.setString(1, username);
+                statement.setString(2, pass);
+
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    isValid = resultSet.next();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // 
+        }
+
+        return isValid;
     }
 }

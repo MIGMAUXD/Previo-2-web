@@ -19,7 +19,7 @@
                     </div>
 
                     <ul class="navbar-nav">
-                        <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Users</a></li>
+                        <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Bills</a></li>
                     </ul>
                 </nav>
             </header>
@@ -29,44 +29,44 @@
                 <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
                 <div class="container">
-                    <h3 class="text-center">List of Usuarios</h3>
+                    <h3 class="text-center">List of Bills</h3>
                     <hr>
                     <div class="container text-left">
 
-                        <a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add New User</a>
+                        <a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add New Bill</a>
                     </div>
                     <br>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Pais</th>
+                                <th>Fecha</th>
+                                <th>Descripcion</th>
+                                <th>Valor</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!--   for (Todo todo: todos) {  -->
-                            <c:forEach var="user" items="${listUser}">
+                            <c:forEach var="bill" items="${listBill}">
 
                                 <tr>
                                     <td>
-                                        <c:out value="${user.id}" />
+                                        <c:out value="${bill.id}" />
                                     </td>
                                     
                                     <td>
-                                        <c:out value="${user.nombre}" />
+                                        <c:out value="${bill.date_bill}" />
                                     </td>
                                    
                                      <td>
-                                        <c:out value="${user.email}" />
+                                        <c:out value="${user.observation}" />
                                     </td>
                                      <td>
-                                        <c:out value="${user.pais}" />
+                                        <c:out value="${user.value}" />
                                     </td>
                                      
-                                    <td><a href="edit?id=<c:out value='${user.id}' />">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?id=<c:out value='${user.id}' />">Delete</a></td>
+                                    <td><a href="edit?id=<c:out value='${bill.id}' />">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?id=<c:out value='${bill.id}' />">Delete</a></td>
                                 </tr>
                             </c:forEach>
                             <!-- } -->

@@ -39,4 +39,14 @@
     <servlet-name>BillServlet</servlet-name>
     <url-pattern>/BillServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BillsServlet</display-name>
+    <servlet-name>BillsServlet</servlet-name>
+    <servlet-class>test.controller.BillsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BillsServlet</servlet-name>
+    <url-pattern>/BillsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

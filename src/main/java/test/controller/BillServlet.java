@@ -62,7 +62,7 @@ public class BillServlet extends HttpServlet {
 				updateUser(request, response);
 				break;
 			default:
-				listUser(request, response);
+				listBill(request, response);
 				break;
 			}
 		} catch (SQLException ex) {
@@ -85,7 +85,7 @@ public class BillServlet extends HttpServlet {
 
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("bill-form.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -94,7 +94,7 @@ public class BillServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Bill existingUser = billDao.selectBill(id);
 		request.setAttribute("bill", existingUser);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("bill-form.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -111,11 +111,11 @@ public class BillServlet extends HttpServlet {
 		response.sendRedirect("list");
 	}
 
-	private void listUser(HttpServletRequest request, HttpServletResponse response)
+	private void listBill(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		List<Bill> listBill = billDao.selectAllUsers();
 		request.setAttribute("listBill", listBill);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("bill-list.jsp");
 		dispatcher.forward(request, response);
 	}
 
