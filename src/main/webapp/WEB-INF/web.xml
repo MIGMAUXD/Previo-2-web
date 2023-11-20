@@ -29,4 +29,14 @@
     <servlet-name>UsuarioServlets</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BillServlet</display-name>
+    <servlet-name>BillServlet</servlet-name>
+    <servlet-class>test.controller.BillServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BillServlet</servlet-name>
+    <url-pattern>/BillServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
